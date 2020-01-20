@@ -328,7 +328,7 @@ class Dimension(object):
     '''
     __slots__ = ["_dims"]
 
-    __array_priority__ = 1000
+    __array_priority__ = 1_000
     #### INITIALISATION ####
 
     def __init__(self, dims):

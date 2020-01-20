@@ -15,7 +15,7 @@ def get_setup_code(N, create_func):
 
 def test_compress(N, create_func):
     setup_code = get_setup_code(N, create_func)
-    number = 1000/N
+    number = 1_000/N
     results = timeit.repeat('queue.compress()', ';'.join(setup_code), repeat=5,
                             number=number)
     return np.array(results) / number
@@ -23,7 +23,7 @@ def test_compress(N, create_func):
 
 def test_push(N, create_func):
     setup_code = get_setup_code(N, create_func) + ['queue.compress()']
-    number = 5000/N
+    number = 5_000/N
     results = timeit.repeat('queue.push(np.arange({}));queue.next()'.format(N),
                             ';'.join(setup_code), repeat=5,
                             number=number)

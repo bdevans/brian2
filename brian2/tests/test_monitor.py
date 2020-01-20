@@ -18,7 +18,7 @@ def test_spike_monitor():
     # We don't use 100 and 1000Hz, because then the membrane potential would
     # be exactly at 1 after 10 resp. 100 timesteps. Due to floating point
     # issues this will not be exact,
-    G.rate = [101, 0, 1001] * Hz
+    G.rate = [101, 0, 1_001] * Hz
 
     mon = SpikeMonitor(G)
 
@@ -84,7 +84,7 @@ def test_spike_monitor_variables():
     # We don't use 100 and 1000Hz, because then the membrane potential would
     # be exactly at 1 after 10 resp. 100 timesteps. Due to floating point
     # issues this will not be exact,
-    G.rate = [101, 0, 1001] * Hz
+    G.rate = [101, 0, 1_001] * Hz
     mon1 = SpikeMonitor(G, variables='prev_spikes')
     mon2 = SpikeMonitor(G, variables='prev_spikes', when='after_resets')
     run(10*ms)
@@ -112,7 +112,7 @@ def test_spike_monitor_get_states():
     # We don't use 100 and 1000Hz, because then the membrane potential would
     # be exactly at 1 after 10 resp. 100 timesteps. Due to floating point
     # issues this will not be exact,
-    G.rate = [101, 0, 1001] * Hz
+    G.rate = [101, 0, 1_001] * Hz
     mon1 = SpikeMonitor(G, variables='prev_spikes')
     run(10*ms)
     all_states = mon1.get_states()
@@ -165,7 +165,7 @@ def test_event_monitor():
     # We don't use 100 and 1000Hz, because then the membrane potential would
     # be exactly at 1 after 10 resp. 100 timesteps. Due to floating point
     # issues this will not be exact,
-    G.rate = [101, 0, 1001] * Hz
+    G.rate = [101, 0, 1_001] * Hz
 
     mon = EventMonitor(G, 'my_event')
     net = Network(G, mon)
@@ -208,7 +208,7 @@ def test_event_monitor_no_record():
     # We don't use 100 and 1000Hz, because then the membrane potential would
     # be exactly at 1 after 10 resp. 100 timesteps. Due to floating point
     # issues this will not be exact,
-    G.rate = [101, 0, 1001] * Hz
+    G.rate = [101, 0, 1_001] * Hz
 
     event_mon = EventMonitor(G, 'my_event', record=False)
     event_mon2 = EventMonitor(G, 'my_event', variables='rate', record=False)
@@ -277,7 +277,7 @@ def test_state_monitor():
                           f = clip(v, 0.1, 0.9) : 1
                           rate: Hz''', threshold='v>1', reset='v=0',
                     refractory=2*ms, name=unique_name)
-    G.rate = [100, 1000] * Hz
+    G.rate = [100, 1_000] * Hz
     G.v = 1
 
     S = Synapses(G, G, 'w: siemens')
@@ -398,7 +398,7 @@ def test_state_monitor_get_states():
                           f = clip(v, 0.1, 0.9) : 1
                           rate: Hz''', threshold='v>1', reset='v=0',
                     refractory=2*ms)
-    G.rate = [100, 1000] * Hz
+    G.rate = [100, 1_000] * Hz
     G.v = 1
     mon = StateMonitor(G, ['v', 'f', 'rate'], record=True)
     run(10*defaultclock.dt)

@@ -330,7 +330,7 @@ def test_GSL_non_autonomous():
     mon2 = StateMonitor(neuron2, 'v', record=True)
     run(20*ms)
     abs_err = np.abs(mon.v.T - mon2.v.T)
-    max_allowed = 1000*np.finfo(prefs.core.default_float_dtype).eps
+    max_allowed = 1_000 * np.finfo(prefs.core.default_float_dtype).eps
     assert np.max(abs_err) < max_allowed
 
 
@@ -347,7 +347,7 @@ def test_GSL_non_autonomous():
     mon2 = StateMonitor(neuron2, 'v', record=True)
     run(20*ms)
     abs_err = np.abs(mon.v.T - mon2.v.T)
-    max_allowed = 1000 * np.finfo(prefs.core.default_float_dtype).eps
+    max_allowed = 1_000 * np.finfo(prefs.core.default_float_dtype).eps
     assert np.max(abs_err) < max_allowed
 
 @pytest.mark.standalone_compatible
@@ -406,7 +406,7 @@ def test_GSL_fixed_timestep_big_dt_small_error():
                          method_options={'adaptable_timestep': False,
                                          'absolute_error': 1e-12},
                          dt=.001*ms, namespace=HH_namespace)
-    neuron.I = 0.7*nA/(20000*umetre**2)
+    neuron.I = 0.7*nA/(20_000*umetre**2)
     neuron.v = HH_namespace['El']
     net = Network(neuron)
     with pytest.raises((RuntimeError, IntegrationError)):
@@ -455,7 +455,7 @@ def test_GSL_method_options_spatialneuron():
 
 @skip_if_not_implemented
 def test_GSL_method_options_synapses():
-    N = 1000
+    N = 1_000
     taum = 10*ms
     taupre = 20*ms
     taupost = taupre

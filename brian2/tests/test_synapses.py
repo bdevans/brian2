@@ -397,7 +397,7 @@ def test_connection_random_with_condition_2():
     S17.connect('i!=j', p='j*0.1')
 
     # Forces the use of the "jump algorithm"
-    big_group = NeuronGroup(10000, 'v: 1', threshold='False')
+    big_group = NeuronGroup(10_000, 'v: 1', threshold='False')
     S18 = Synapses(big_group, big_group, 'w:1', 'v+=w')
     S18.connect('i != j', p=0.001)
 
@@ -1442,10 +1442,10 @@ def test_event_driven():
     # trains with different rates
     pre = NeuronGroup(2, '''dv/dt = rate : 1
                             rate : Hz''', threshold='v>1', reset='v=0')
-    pre.rate = [1000, 1500] * Hz
+    pre.rate = [1_000, 1_500] * Hz
     post = NeuronGroup(2, '''dv/dt = rate : 1
                              rate : Hz''', threshold='v>1', reset='v=0')
-    post.rate = [1100, 1400] * Hz
+    post.rate = [1_100, 1_400] * Hz
     # event-driven formulation
     taupre = 20 * ms
     taupost = taupre
@@ -1876,7 +1876,7 @@ def test_vectorisation_STDP_like():
                            w_fac = clip(w_fac + A_pre, 0, w_max)
                         ''')
     syn.connect()
-    neurons.rate = 1000*Hz
+    neurons.rate = 1_000*Hz
     neurons.v = 'abs(3-i)*0.1 + 0.7'
     run(2*ms)
     # Make sure that this test is invariant to synapse order

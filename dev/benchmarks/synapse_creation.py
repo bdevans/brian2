@@ -45,7 +45,7 @@ conditions = [('Full', 'True'),
               ('Random no-self (1%)', ('(i != j)', None, 1, 0.01))]
 targets = [NumpyCodeObject]
 results = {}
-max_connections = 2500000
+max_connections = 2_500_000
 for target in targets:
     lang_name = target.class_name
     for pattern, condition in conditions:

@@ -170,9 +170,9 @@ if __name__=='__main__':
                    do_synapses=False,
                    exact_method=False,
                    )
-    N = [1, 10, 100, 1000,
-         10000,
-         #100000,
+    N = [1, 10, 100, 1_000,
+         10_000,
+         #100_000,
          ]
 
     for name in options.keys()+['']:

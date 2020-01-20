@@ -244,7 +244,7 @@ def test_attributes_section_coordinates_all():
     sec = Section(n=n, diameter=[10, 10, 10, 10]*um,
                   x=[10, 11, 11, 11]*um,
                   y=[100, 100, 101, 101]*um,
-                  z=[1000, 1000, 1000, 1001]*um)
+                  z=[1_000, 1_000, 1_000, 1_001]*um)
 
     assert_equal(sec.diameter, np.ones(n)*10*um)
     assert_allclose(sec.length, np.ones(n)*um)
@@ -257,9 +257,9 @@ def test_attributes_section_coordinates_all():
     assert_allclose(sec.start_y, [100, 100, 101]*um)
     assert_allclose(sec.y, [100, 100.5, 101]*um)
     assert_allclose(sec.end_y, [100, 101, 101]*um)
-    assert_allclose(sec.start_z, [1000, 1000, 1000]*um)
-    assert_allclose(sec.z, [1000, 1000, 1000.5]*um)
-    assert_allclose(sec.end_z, [1000, 1000, 1001]*um)
+    assert_allclose(sec.start_z, [1_000, 1_000, 1_000]*um)
+    assert_allclose(sec.z, [1_000, 1_000, 1_000.5]*um)
+    assert_allclose(sec.end_z, [1_000, 1_000, 1_001]*um)
 
     # Specify varying diameters
     sec = Section(n=n, diameter=[20, 10, 5, 2.5]*um,

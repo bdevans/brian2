@@ -125,7 +125,7 @@ def check_cache(target):
     if cache_dir is None:
         return
     size = _get_size_recursively(cache_dir)
-    size_in_mb = int(round(size/1024./1024.))
+    size_in_mb = int(round(size/1_024./1_024.))
     if size_in_mb > prefs.codegen.max_cache_dir_size:
         logger.info('Cache size for target "{target}": {size} MB.\n'
                     'You can call "clear_cache(\'{target}\')" to delete all '

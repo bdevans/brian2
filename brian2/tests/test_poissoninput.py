@@ -23,15 +23,15 @@ def test_poissoninput():
     never_update = PoissonInput(G, 'x', 100, 0*Hz, weight=1*volt)
     always_update = PoissonInput(G, 'y', 50, 1/defaultclock.dt, weight=2*volt)
     always_update2 = PoissonInput(G, 'y2', 50, 1/defaultclock.dt, weight='1*volt + 1*volt')
-    sometimes_update = PoissonInput(G, 'z', 10000, 50*Hz, weight=0.5*volt)
-    sometimes_update2 = PoissonInput(G, 'z2', 10000, 50*Hz, weight='w*volt')
+    sometimes_update = PoissonInput(G, 'z', 10_000, 50*Hz, weight=0.5*volt)
+    sometimes_update2 = PoissonInput(G, 'z2', 10_000, 50*Hz, weight='w*volt')
 
     assert_equal(never_update.rate, 0*Hz)
     assert_equal(never_update.N, 100)
     assert_equal(always_update.rate, 1/defaultclock.dt)
     assert_equal(always_update.N, 50)
     assert_equal(sometimes_update.rate, 50*Hz)
-    assert_equal(sometimes_update.N, 10000)
+    assert_equal(sometimes_update.N, 10_000)
 
     mon = StateMonitor(G, ['x', 'y', 'y2', 'z', 'z2'], record=True, when='end')
 

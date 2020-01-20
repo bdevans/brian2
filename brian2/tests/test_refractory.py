@@ -124,7 +124,7 @@ def test_refractoriness_repeated():
     # Create a group that spikes whenever it can
     group = NeuronGroup(1, '', threshold='True', refractory=10*defaultclock.dt)
     spike_mon = SpikeMonitor(group)
-    run(10000*defaultclock.dt)
+    run(10_000*defaultclock.dt)
     assert spike_mon.t[0] == 0*ms
     assert_allclose(np.diff(spike_mon.t), 10*defaultclock.dt)
 
@@ -139,7 +139,7 @@ def test_refractoriness_repeated_legacy():
     # Create a group that spikes whenever it can
     group = NeuronGroup(1, '', threshold='True', refractory=10*defaultclock.dt)
     spike_mon = SpikeMonitor(group)
-    run(10000*defaultclock.dt)
+    run(10_000*defaultclock.dt)
     assert spike_mon.t[0] == 0*ms
 
     # Empirical values from running with earlier Brian versions

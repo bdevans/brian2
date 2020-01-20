@@ -130,7 +130,7 @@ def test_network_different_clocks():
     net = Network(x, y)
     net.run(100*second+defaultclock.dt, report='text')
     updates = ''.join(NameLister.updates)[2:]  # ignore the first time step
-    assert updates == ('xxxxxxxxxxy'*100000)
+    assert updates == ('xxxxxxxxxxy'*100_000)
 
 
 @pytest.mark.codegen_independent

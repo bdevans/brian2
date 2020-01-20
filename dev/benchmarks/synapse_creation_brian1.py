@@ -46,7 +46,7 @@ conditions = [('Full', True),
               ('Random no-self (1%)', '(i != j) * 0.01')]
 results = {}
 lang_name = 'Brian 1'
-max_connections = 10000000
+max_connections = 10_000_000
 for pattern, condition in conditions:
     N = 1
     connections = took = 0

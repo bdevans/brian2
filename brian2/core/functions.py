@@ -635,7 +635,7 @@ class exprel(sympy_Function):
     def _eval_is_finite(self):
         return self.args[0].is_finite
 
-_infinity_int = 1073741823  # maximum 32bit integer divided by 2
+_infinity_int = 1_073_741_823  # maximum 32bit integer divided by 2
 
 
 def timestep(t, dt):

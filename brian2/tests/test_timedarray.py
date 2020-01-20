@@ -99,16 +99,16 @@ def test_long_timedarray():
     Use a very long timedarray (with a big dt), where the upsampling can lead
     to integer overflow.
     '''
-    ta = TimedArray(np.arange(16385), dt=1*second)
+    ta = TimedArray(np.arange(16_385), dt=1*second)
     G = NeuronGroup(1, 'value = ta(t) : 1')
     mon = StateMonitor(G, 'value', record=True)
     net = Network(G, mon)
     # We'll start the simulation close to the critical boundary
     # FIXME: setting the time like this does not work for standalone
-    net.t_ = float(16384*second - 5*ms)
+    net.t_ = float(16_384*second - 5*ms)
     net.run(10*ms)
-    assert_allclose(mon[0].value[mon.t < 16384*second], 16383)
-    assert_allclose(mon[0].value[mon.t >= 16384*second], 16384)
+    assert_allclose(mon[0].value[mon.t < 16_384*second], 16_383)
+    assert_allclose(mon[0].value[mon.t >= 16_384*second], 16_384)
 
 
 def test_timedarray_repeated_use():

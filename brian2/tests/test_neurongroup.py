@@ -1519,9 +1519,9 @@ def test_random_values_random_seed():
 def test_random_values_fixed_seed():
     G = NeuronGroup(100, '''v1 : 1
                             v2 : 1''')
-    seed(12345678)
+    seed(12_345_678)
     G.v1 = 'rand() + randn()'
-    seed(12345678)
+    seed(12_345_678)
     G.v2 = 'rand() + randn()'
     run(0*ms)  # for standalone
     assert np.var(G.v1[:]) > 0
@@ -1531,7 +1531,7 @@ def test_random_values_fixed_seed():
 
 def test_random_values_fixed_and_random():
     G = NeuronGroup(10, 'dv/dt = -v/(10*ms) + 0.1*xi/sqrt(ms) : 1')
-    seed(13579)
+    seed(13_579)
     G.v = 'rand()'
     seed()
     mon = StateMonitor(G, 'v', record=True)
@@ -1539,7 +1539,7 @@ def test_random_values_fixed_and_random():
     first_run_values = np.array(mon.v)
 
     G = NeuronGroup(10, 'dv/dt = -v/(10*ms) + 0.1*xi/sqrt(ms) : 1')
-    seed(13579)
+    seed(13_579)
     G.v = 'rand()'
     seed()
     mon = StateMonitor(G, 'v', record=True)

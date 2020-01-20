@@ -8,7 +8,7 @@ import numpy as np
 
 from brian2 import *
 
-sizes = [10, 100, 1000, 10000, 100000]
+sizes = [10, 100, 1_000, 10_000, 100_000]
 
 access = lambda idx, ar1, ar2: ar1[idx]
 multiply = lambda idx, ar1, ar2: 42 * ar1

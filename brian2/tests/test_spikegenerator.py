@@ -142,7 +142,7 @@ def test_spikegenerator_period_repeat():
 
     rec = np.rec.fromarrays([times, indices], names=['t', 'i'])
     rec.sort()
-    sorted_times = np.ascontiguousarray(rec.t)*1000
+    sorted_times = np.ascontiguousarray(rec.t)*1_000
     sorted_indices = np.ascontiguousarray(rec.i)
     SG = SpikeGeneratorGroup(1, indices, times, period=1*ms)
     s_mon = SpikeMonitor(SG)
@@ -280,8 +280,8 @@ def test_spikegenerator_rounding():
 
     # all spikes should fall in separate bins
     dt = 0.1*ms
-    indices = np.zeros(10000)
-    times = np.arange(10000)*dt
+    indices = np.zeros(10_000)
+    times = np.arange(10_000)*dt
     SG = SpikeGeneratorGroup(1, indices, times, dt=dt)
     target = NeuronGroup(1, 'count : 1',
                          threshold='True', reset='count=0')  # set count to zero at every time step
@@ -291,8 +291,8 @@ def test_spikegenerator_rounding():
     net = Network(SG, target, syn, mon)
     # change the schedule so that resets are processed before synapses
     net.schedule = ['start', 'groups', 'thresholds', 'resets', 'synapses', 'end']
-    net.run(10000*dt)
-    assert_equal(mon[0].count, np.ones(10000))
+    net.run(10_000*dt)
+    assert_equal(mon[0].count, np.ones(10_000))
 
 
 @pytest.mark.standalone_compatible
@@ -300,7 +300,7 @@ def test_spikegenerator_rounding():
 def test_spikegenerator_rounding_long():
     # all spikes should fall in separate bins
     dt = 0.1*ms
-    N = 1000000
+    N = 1_000_000
     indices = np.zeros(N)
     times = np.arange(N)*dt
     SG = SpikeGeneratorGroup(1, indices, times, dt=dt)
@@ -320,7 +320,7 @@ def test_spikegenerator_rounding_period():
     # all spikes should fall in separate bins
     dt = 0.1*ms
     N = 100
-    repeats = 10000
+    repeats = 10_000
     indices = np.zeros(N)
     times = np.arange(N)*dt
     SG = SpikeGeneratorGroup(1, indices, times, dt=dt, period=N*dt)

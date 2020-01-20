@@ -153,8 +153,8 @@ def test_bool_to_int():
 def test_timestep_function():
     dt = defaultclock.dt_
     # Check that multiples of dt end up in the correct time step
-    t = np.arange(100000)*dt
-    assert_equal(timestep(t, dt), np.arange(100000))
+    t = np.arange(100_000)*dt
+    assert_equal(timestep(t, dt), np.arange(100_000))
 
     # Scalar values should stay scalar
     ts = timestep(0.0005, 0.0001)

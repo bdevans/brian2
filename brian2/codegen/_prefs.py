@@ -54,7 +54,7 @@ prefs.register_preferences(
         '''
     ),
     max_cache_dir_size=BrianPreference(
-      default=1000,
+      default=1_000,
       docs='''
       The size of a directory (in MB) with cached code for Cython that triggers a warning.
       Set to 0 to never get a warning.

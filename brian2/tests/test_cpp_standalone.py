@@ -22,7 +22,7 @@ def test_cpp_standalone():
     threshold = 'V>-50*mV'
     reset = 'V=-60*mV'
     refractory = 5*ms
-    N = 1000
+    N = 1_000
     
     G = NeuronGroup(N, eqs,
                     reset=reset,
@@ -41,7 +41,7 @@ def test_cpp_standalone():
     device.build(directory=None, with_output=False)
     # we do an approximate equality here because depending on minor details of how it was compiled, the results
     # may be slightly different (if -ffast-math is on)
-    assert len(M.i)>=17000 and len(M.i)<=18000
+    assert len(M.i)>=17_000 and len(M.i)<=18_000
     assert len(M.t) == len(M.i)
     assert M.t[0] == 0.
     reset_device()
@@ -348,7 +348,7 @@ def test_run_with_debug():
 @pytest.mark.standalone_only
 def test_changing_profile_arg():
     set_device('cpp_standalone', build_on_run=False)
-    G = NeuronGroup(10000, 'v : 1')
+    G = NeuronGroup(10_000, 'v : 1')
     op1 = G.run_regularly('v = exp(-v)', name='op1')
     op2 = G.run_regularly('v = exp(-v)', name='op2')
     op3 = G.run_regularly('v = exp(-v)', name='op3')
@@ -361,17 +361,17 @@ def test_changing_profile_arg():
     op2.active = True
     op3.active = False
     op4.active = False
-    run(1000*defaultclock.dt, profile=True)
+    run(1_000*defaultclock.dt, profile=True)
     op1.active = True
     op2.active = True
     op3.active = True
     op4.active = True
-    run(1000*defaultclock.dt, profile=False)
+    run(1_000*defaultclock.dt, profile=False)
     op1.active = False
     op2.active = True
     op3.active = True
     op4.active = False
-    run(1000*defaultclock.dt, profile=True)
+    run(1_000*defaultclock.dt, profile=True)
     device.build(directory=None, with_output=False)
     profiling_dict = dict(magic_network.profiling_info)
     # Note that for now, C++ standalone creates a new CodeObject for every run,

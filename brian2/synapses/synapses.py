@@ -39,7 +39,7 @@ from brian2.synapses.parse_synaptic_generator_syntax import parse_synapse_genera
 from brian2.parsing.bast import brian_ast
 from brian2.parsing.rendering import NodeRenderer
 
-MAX_SYNAPSES = 2147483647
+MAX_SYNAPSES = 2_147_483_647
 
 __all__ = ['Synapses']
 

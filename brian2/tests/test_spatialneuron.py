@@ -249,11 +249,11 @@ def test_rallpack1():
     length = 1*mm
     Cm = 1 * uF / cm ** 2
     Ri = 100 * ohm * cm
-    N = 1000
+    N = 1_000
     morpho = Cylinder(diameter=diameter, length=length, n=N)
 
     # Passive channels
-    gL = 1./(40000*ohm*cm**2)
+    gL = 1./(40_000*ohm*cm**2)
     EL = -65*mV
     eqs = '''
     Im = gL*(EL - v) : amp/meter**2
@@ -327,7 +327,7 @@ def test_rallpack2():
         endpoints = new_endpoints
 
     # Passive channels
-    gL = 1./(40000*ohm*cm**2)
+    gL = 1./(40_000*ohm*cm**2)
     EL = -65*mV
     eqs = '''
     Im = gL*(EL - v) : amp/meter**2
@@ -392,10 +392,10 @@ def test_rallpack3():
     # Morphology
     diameter = 1*um
     length = 1*mm
-    N = 1000
+    N = 1_000
     morpho = Cylinder(diameter=diameter, length=length, n=N)
     # Passive properties
-    gl = 1./(40000*ohm*cm**2)
+    gl = 1./(40_000*ohm*cm**2)
     El = -65*mV
     Cm = 1 * uF / cm ** 2
     Ri = 100 * ohm * cm

@@ -48,10 +48,10 @@ def test_defaultclock():
 def test_set_interval_warning():
     clock = Clock(dt=0.1*ms)
     with catch_logs() as logs:
-        clock.set_interval(0*second, 1000*second)  # no problem
+        clock.set_interval(0*second, 1_000*second)  # no problem
     assert len(logs) == 0
     with catch_logs() as logs:
-        clock.set_interval(0*second, 10000000000*second)  # too long
+        clock.set_interval(0*second, 1_000_000_000*second)  # too long
     assert len(logs) == 1
     assert logs[0][1].endswith('many_timesteps')
 

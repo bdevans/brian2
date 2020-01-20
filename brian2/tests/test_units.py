@@ -61,7 +61,7 @@ def test_construction():
     assert_quantity(q, 0.5, second)
     q = np.array(500) * ms
     assert_quantity(q, 0.5, second)
-    q = np.array([500, 1000]) * ms
+    q = np.array([500, 1_000]) * ms
     assert_quantity(q, np.array([0.5, 1]), second)
     q = Quantity(500)
     assert_quantity(q, 500, 1)
@@ -232,7 +232,7 @@ def test_str_repr():
                      array([1, 2, 3]) * kmetre / second,
                      np.ones(3) * nS / cm**2,
                      Unit(1, dim=get_or_create_dimension(length=5, time=2)),
-                     8000*umetre**3, [0.0001, 10000] * umetre**3,
+                     8_000*umetre**3, [0.0001, 10_000] * umetre**3,
                      1/metre, 1/(coulomb*metre**2), Unit(1)/second,
                      3.*mM, 5*mole/liter, 7*liter/meter3]
     
@@ -1105,7 +1105,7 @@ def test_get_best_unit():
     # get_best_unit should not check all values for long arrays, since it is
     # a function used for display purposes only. Instead, only the first and
     # last few values should matter (see github issue #966)
-    long_ar = np.ones(10000)*siemens
+    long_ar = np.ones(10_000)*siemens
     long_ar[:10] = 1*nS
     long_ar[-10:] = 2*nS
     values = [(np.arange(10)*mV, mV),
