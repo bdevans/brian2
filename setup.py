@@ -192,5 +192,5 @@ setup(name='Brian2',
           'Programming Language :: Python :: 3',
           'Topic :: Scientific/Engineering :: Bio-Informatics'
       ],
-      python_requires='>=3.5'
+      python_requires='>=3.6'
       )
