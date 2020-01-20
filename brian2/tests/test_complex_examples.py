@@ -28,8 +28,8 @@ def test_cuba():
     wi = (-20*4.5/10)*mV # inhibitory synaptic weight
     Ce = Synapses(P, P, on_pre='ge += we')
     Ci = Synapses(P, P, on_pre='gi += wi')
-    Ce.connect('i<3200', p=0.02)
-    Ci.connect('i>=3200', p=0.02)
+    Ce.connect('i<3_200', p=0.02)
+    Ci.connect('i>=3_200', p=0.02)
 
     s_mon = SpikeMonitor(P)
 
